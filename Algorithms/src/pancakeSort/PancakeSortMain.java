@@ -22,15 +22,18 @@ public class PancakeSortMain {
     }
 
     public static void pancakeSort(int[] arr){
-        int maxElIndex = 0;
-        for (int i = 0; i < arr.length; i++){
-            if(arr[i] > arr[maxElIndex]){
-                maxElIndex = i;
+        for (int i = arr.length - 1; i >= 0; i--){
+            int maxElIndex = 0;
+            for(int j = 0; j <= i; j++) {
+                if (arr[j] > arr[maxElIndex]) {
+                    maxElIndex = j;
+                }
             }
+
+            flip(arr, maxElIndex + 1);
+            flip(arr, i + 1);
         }
 
-        flip(arr, maxElIndex + 1);
-        flip(arr, arr.length);
     }
 
     public static void main(String args[]){
